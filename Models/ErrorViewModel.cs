@@ -1,4 +1,4 @@
-namespace DSD605ClassProject_7_8_23.Models
+namespace DSD605ClassProject.Models
 {
     public class ErrorViewModel
     {

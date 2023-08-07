@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-DSD605ClassProject_7_8_23-e6951057-4f56-42bb-98a0-f9651af553f1</UserSecretsId>
-    <RootNamespace>DSD605ClassProject_7_8_23</RootNamespace>
+    <RootNamespace>DSD605ClassProject</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

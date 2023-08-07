@@ -1,4 +1,4 @@
-﻿namespace DSD605ClassProject_7_8_23.DTO
+﻿namespace DSD605ClassProject.DTO
 {
     public class UserRoles
     {

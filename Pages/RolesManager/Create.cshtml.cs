@@ -2,12 +2,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DSD605ClassProject_7_8_23.Pages.RolesManager
+namespace DSD605ClassProject.Pages.RolesManager
 {
-    [BindProperties]
+
     public class CreateModel : PageModel
     {
         private readonly RoleManager<IdentityRole> _roleManager;
+
         public CreateModel(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
@@ -19,13 +20,14 @@ namespace DSD605ClassProject_7_8_23.Pages.RolesManager
         {
             if (ModelState.IsValid)
             {
-                var role = new IdentityRole { Name = Name.Trim() };
-                await _roleManager.CreateAsync(role);
+                //create a new Role 
+                var role = new IdentityRole { Name = Name.Trim() }; await _roleManager.CreateAsync(role);
                 return RedirectToPage("/RolesManager/Index");
             }
             return Page();
         }
-
-
     }
+
+
 }
+

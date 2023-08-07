@@ -1,11 +1,11 @@
-﻿using DSD605ClassProject_7_8_23.Models;
+﻿using DSD605ClassProject.Models;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using System.Diagnostics;
 
-namespace DSD605ClassProject_7_8_23.Controllers
+namespace DSD605ClassProject.Controllers
 {
     [Authorize]
     public class HomeController : Controller

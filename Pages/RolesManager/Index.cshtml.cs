@@ -1,12 +1,12 @@
-using DSD605ClassProject_7_8_23.Data;
-using DSD605ClassProject_7_8_23.DTO;
+using DSD605ClassProject.Data;
+using DSD605ClassProject.DTO;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
-namespace DSD605ClassProject_7_8_23.Pages.RolesManager
+namespace DSD605ClassProject.Pages.RolesManager
 {
     [BindProperties]
     public class IndexModel : PageModel
