@@ -1,11 +1,13 @@
 ﻿using DSD605ClassProject_7_8_23.Models;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using System.Diagnostics;
 
 namespace DSD605ClassProject_7_8_23.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,7 +16,7 @@ namespace DSD605ClassProject_7_8_23.Controllers
         {
             _logger = logger;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
