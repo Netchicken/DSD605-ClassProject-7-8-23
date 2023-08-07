@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DSD605ClassProject_7_8_23.Pages.RolesManager
 {
+    [BindProperties]
     public class CreateModel : PageModel
     {
         private readonly RoleManager<IdentityRole> _roleManager;
