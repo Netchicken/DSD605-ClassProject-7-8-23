@@ -16,6 +16,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddRazorPages(); //add this in to make razorpages work
+
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Password settings.
