@@ -16,8 +16,39 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddRazorPages(); //add this in to make razorpages work
+builder.Services.AddRazorPages(
 
+    options =>
+    {
+        //lock out the entire roles folder to someone who doesn't meet the AdminViewPolicy policy.
+        options.Conventions.AuthorizeFolder("/RolesManager", "AdminViewPolicy");
+        options.Conventions.AuthorizeFolder("/ClaimsManager", "AdminViewPolicy");
+        //  options.Conventions.AuthorizePage("/ClaimsManager/Assign", "SuperAdminRolePolicy");
+    }
+
+
+    ); //add this in to make razorpages work
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("SuperAdminRolePolicy", policyBuilder => policyBuilder.RequireRole("Admin"));
+    options.AddPolicy("AdminRolePolicy", policyBuilder => policyBuilder.RequireRole("Admin"));
+    options.AddPolicy("AdminClaimPolicy", policyBuilder => policyBuilder.RequireClaim("SuperAdmin"));
+
+    options.AddPolicy("AdminViewPolicy", policyBuilder => policyBuilder.RequireAssertion(context =>
+    {
+        var joiningDateClaim = context.User.FindFirst(c => c.Type == "Joining Date")?.Value; //comes back as string
+        var joiningDate = Convert.ToDateTime(joiningDateClaim); //now we have the joining date as a datetime object
+
+        return context.User.HasClaim(c => c.Type == "SuperAdmin") && context.User.HasClaim("Permission", "View Roles") && joiningDate < DateTime.Now.AddMonths(-6);
+
+    }));
+
+
+    //context.User.HasClaim("Permission", "View Roles") &&
+    //joiningDate < DateTime.Now.AddMonths(-6) &&
+
+});
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

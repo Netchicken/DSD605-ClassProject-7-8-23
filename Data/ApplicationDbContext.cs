@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using DSD605ClassProject.Models;
+
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DSD605ClassProject.Data
@@ -9,5 +11,7 @@ namespace DSD605ClassProject.Data
             : base(options)
         {
         }
+        public DbSet<Movie> Movie { get; set; }
+        public DbSet<Cast> Cast { get; set; }
     }
 }

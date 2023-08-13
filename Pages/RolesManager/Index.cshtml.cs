@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DSD605ClassProject.Pages.RolesManager
 {
+
     [BindProperties]
     public class IndexModel : PageModel
     {

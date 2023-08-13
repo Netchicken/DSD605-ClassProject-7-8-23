@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DSD605ClassProject.Pages.ClaimsManager
 {
+
     public class IndexModel : PageModel
     {
 
