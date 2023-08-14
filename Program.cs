@@ -74,6 +74,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 });
 
+builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
@@ -81,6 +83,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
@@ -100,6 +104,7 @@ app.UseAuthorization();//Authorization middleware is enabled by default in the w
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers();
 app.MapRazorPages();
 
 app.Run();
