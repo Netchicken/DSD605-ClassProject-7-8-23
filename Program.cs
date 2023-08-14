@@ -3,7 +3,24 @@ using DSD605ClassProject.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
+var CORSAllowSpecificOrigins = "CORSAllowSpecificOrigins";  //just a variable to hold the name of the policy
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    //NOTE THIS ISN'T WORKING INT HE COLLEGE - TRY ALLOWANYORIGIN
+    options.AddPolicy(name: CORSAllowSpecificOrigins,
+        policy => { policy.WithOrigins("https://localhost:3000"); }
+
+        );
+
+
+});
+
+//policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); } //only for a quick hack
+//policy.WithOrigins("https://localhost:3000"); }
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -97,7 +114,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseCors(CORSAllowSpecificOrigins); //this is the line that enables CORS
 app.UseAuthentication();
 app.UseAuthorization();//Authorization middleware is enabled by default in the web application template by the inclusion of app.UseAuthorization() in the Program class.
 
